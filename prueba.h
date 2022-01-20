@@ -6,7 +6,7 @@
 /*   By: migonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 10:06:38 by migonzal          #+#    #+#             */
-/*   Updated: 2022/01/19 12:19:52 by migonzal         ###   ########.fr       */
+/*   Updated: 2022/01/20 10:17:09 by migonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ typedef struct s_data
 
 */
 
+/*
+typedef struct s_pos
+{
+	int x;
+	int y;
+}			t_pos;
+
+*/
 typedef struct s_vars
 {
 	void *mlx;
