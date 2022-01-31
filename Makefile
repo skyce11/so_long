@@ -6,15 +6,15 @@
 #    By: migonzal <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/11 09:56:15 by migonzal          #+#    #+#              #
-#    Updated: 2022/01/19 11:55:33 by migonzal         ###   ########.fr        #
+#    Updated: 2022/01/31 12:42:06 by migonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = image.c
+SRCS =  array.c  ./gnl/get_next_line.c ./gnl/get_next_line_utils.c ./Libft/ft_split.c
 
 OBJS = ${SRCS:.c=.o}
 
-HDRS = prueba.h
+HDRS = so_long.h 
 
 NAME = mlx.a
 
@@ -27,7 +27,7 @@ CFLAGS = -Wall -Wextra -Werror
 	$(CC) $(CFLAGS) -Ilmx -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) -Lmlx -lmlx -framework OpenGL -framework Appkit -o $(NAME)
+	$(CC) $(OBJS) -Lmlx -lmlx -framework OpenGL -framework Appkit -o $(NAME) -g -fsanitize=address
 
 all: ${NAME}
 

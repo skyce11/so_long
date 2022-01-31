@@ -1,43 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   prueba_mapa.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 09:53:34 by migonzal          #+#    #+#             */
-/*   Updated: 2022/01/25 10:04:06 by migonzal         ###   ########.fr       */
+/*   Created: 2022/01/26 09:27:41 by migonzal          #+#    #+#             */
+/*   Updated: 2022/01/31 12:38:14 by migonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "prueba.h"
-/*
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
-*/
+# include "so_long.h"
 
-int key_hook(int keycode, t_vars vars)
+
+int main ()
 {
-	(void) vars;
+	char *line;
+	int fd;
+	int i;
+	int j;
+	int c;
 
-	if (keycode == 53)
-		exit(0);
-	else
+	fd = open("map_example.ber", O_RDWR);
+	line = get_next_line(fd);
+	i = 0;
+	j = 0;
+	c = 0;
+
+	c = strlen(line) - 1;
+	printf(" Esto son las x =%d\n", c);
+
+	while (line)
 	{
-		printf("%i\n", keycode);
+		line = get_next_line(fd);
+		i++;
 	}
+
+
+	printf("Esto son las y = %d\n", i);
+
+
+
 	return (0);
+
+	
+
+
+
 }
 
-
-int	main(void)
-{
-	t_vars	vars;
-
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");
-	mlx_key_hook(vars.win, key_hook, &vars);
-	mlx_loop(vars.mlx);
-}

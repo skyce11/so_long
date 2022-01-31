@@ -6,7 +6,7 @@
 /*   By: migonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:31:39 by migonzal          #+#    #+#             */
-/*   Updated: 2022/01/20 11:44:27 by migonzal         ###   ########.fr       */
+/*   Updated: 2022/01/25 10:44:30 by migonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ void charge_img(t_vars vars, t_image image )
 
 
 
-int key_hook(int keycode, t_vars *vars, t_image *image)
+int key_hook(int keycode, t_vars *vars, t_image *image, t_pos pos)
 {
 	char * win;
 	char *img;
-	static int x = 0;
-	static int y = 0;
+	pos.x = 0;
+	pos.y = 0;
+
 	
 	win = vars -> win;
 	
@@ -37,48 +38,49 @@ int key_hook(int keycode, t_vars *vars, t_image *image)
 		exit(0);
 	else if (keycode == 36)
 	{
-		img = mlx_xpm_file_to_image(vars -> mlx, "./link.xpm", &image -> img_width, &image -> img_height);
-		mlx_put_image_to_window(vars -> mlx, win, img, x, y);
+		img = mlx_xpm_file_to_image(vars -> mlx, "./images/link.xpm", &image -> img_width, &image -> img_height);
+		mlx_put_image_to_window(vars -> mlx, win, img, pos.x, pos.y);
 		mlx_destroy_image(vars -> mlx, img);
 	}
 	else if (keycode == 124)
 	{
-		img = mlx_xpm_file_to_image(vars -> mlx, "./ground.xpm", &image -> img_width, &image -> img_height);
-		mlx_put_image_to_window(vars, win, img, x, y);
+		img = mlx_xpm_file_to_image(vars -> mlx, "./images/ground.xpm", 
+				&image -> img_width, &image -> img_height);
+		mlx_put_image_to_window(vars, win, img, pos.x, pos.y);
 		mlx_destroy_image(vars -> mlx, img);
-		x += 10;
-		img = mlx_xpm_file_to_image(vars -> mlx, "./link_right.xpm", &image -> img_width, &image -> img_height);
-		mlx_put_image_to_window(vars -> mlx, win, img, x, y);
+		pos.x += 40;
+		img = mlx_xpm_file_to_image(vars -> mlx, "./images/link_right.xpm", &image -> img_width, &image -> img_height);
+		mlx_put_image_to_window(vars -> mlx, win, img, pos.x, pos.y);
 		mlx_destroy_image(vars -> mlx, img);
 	}
 	else if (keycode == 123)
 	{
-		img = mlx_xpm_file_to_image(vars -> mlx, "./ground.xpm", &image -> img_width, &image -> img_height);
-		mlx_put_image_to_window(vars, win, img, x, y);
+		img = mlx_xpm_file_to_image(vars -> mlx, "./images/ground.xpm", &image -> img_width, &image -> img_height);
+		mlx_put_image_to_window(vars, win, img, pos.x, pos.y);
 		mlx_destroy_image(vars -> mlx, img);
-		x -= 10;
-		img = mlx_xpm_file_to_image(vars -> mlx, "./link_left.xpm", &image -> img_width, &image -> img_height);
-		mlx_put_image_to_window(vars -> mlx, win, img, x, y);
+		pos.x -= 40;
+		img = mlx_xpm_file_to_image(vars -> mlx, "./images/link_left.xpm", &image -> img_width, &image -> img_height);
+		mlx_put_image_to_window(vars -> mlx, win, img, pos.x, pos.y);
 		mlx_destroy_image(vars -> mlx, img);
 	}
 	else if (keycode == 126)
 	{
-		img = mlx_xpm_file_to_image(vars -> mlx, "./ground.xpm", &image -> img_width, &image -> img_height);
-		mlx_put_image_to_window(vars -> mlx, win, img, x, y);
+		img = mlx_xpm_file_to_image(vars -> mlx, "./images/ground.xpm", &image -> img_width, &image -> img_height);
+		mlx_put_image_to_window(vars -> mlx, win, img, pos.x, pos.y);
 		mlx_destroy_image(vars -> mlx, img);
-		y -= 10;
-		img = mlx_xpm_file_to_image(vars -> mlx, "./link_up.xpm", &image -> img_width, &image -> img_height);
-		mlx_put_image_to_window(vars -> mlx, win, img, x, y);
+		pos.y -= 40;
+		img = mlx_xpm_file_to_image(vars -> mlx, "./images/link_up.xpm", &image -> img_width, &image -> img_height);
+		mlx_put_image_to_window(vars -> mlx, win, img, pos.x, pos.y);
 		mlx_destroy_image(vars -> mlx, img);
 	}
 	else if (keycode == 125)
 	{
-		img = mlx_xpm_file_to_image(vars -> mlx, "./ground.xpm", &image -> img_width, &image -> img_height);
-		mlx_put_image_to_window(vars -> mlx, win, img, x, y);
+		img = mlx_xpm_file_to_image(vars -> mlx, "./images/ground.xpm", &image -> img_width, &image -> img_height);
+		mlx_put_image_to_window(vars -> mlx, win, img, pos.x, pos.y);
 		mlx_destroy_image(vars -> mlx, img);
-		y += 10;
-		img = mlx_xpm_file_to_image(vars -> mlx, "./link.xpm", &image -> img_width, &image -> img_height);
-		mlx_put_image_to_window(vars -> mlx, win, img, x, y);
+		pos.y += 40;
+		img = mlx_xpm_file_to_image(vars -> mlx, "./images/link.xpm", &image -> img_width, &image -> img_height);
+		mlx_put_image_to_window(vars -> mlx, win, img, pos.x, pos.y);
 		mlx_destroy_image(vars -> mlx, img);
 	}
 	else
@@ -113,7 +115,7 @@ int main()
 			y = 0;
 		while (y <= 500)
 		{
-			img = mlx_xpm_file_to_image(vars.mlx, "./ground.xpm", &image.img_width, &image.img_height);
+			img = mlx_xpm_file_to_image(vars.mlx, "./images/ground.xpm", &image.img_width, &image.img_height);
 			mlx_put_image_to_window(vars.mlx, vars.win, img, x, y);
 			mlx_destroy_image(vars.mlx, img);
 			y += 10;
