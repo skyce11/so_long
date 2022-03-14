@@ -6,11 +6,11 @@
 /*   By: migonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 11:24:57 by migonzal          #+#    #+#             */
-/*   Updated: 2022/03/14 13:25:54 by migonzal         ###   ########.fr       */
+/*   Updated: 2022/03/07 12:19:37 by migonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	initiator(t_map *map)
 {
@@ -42,7 +42,7 @@ void	parser(int argc, char const **argv, t_map *map)
 	map -> map = mountmap(fd, map);
 	close (fd);
 }
-/*
+
 char	**mountmap(int fd, t_map *map)
 {
 	char	**ls;
@@ -58,44 +58,12 @@ char	**mountmap(int fd, t_map *map)
 	{
 		map -> y += 1;
 		tmp = ft_strdup(spliter);
-		free(spliter);
 		spliter = ft_strjoin(tmp, line);
-		free(tmp);
-		free(line);
 		line = get_next_line(fd);
 	}
 	map -> cy = map -> y;
 	map -> ty = (map -> cy) * 40;
 	ls = ft_split(spliter, '\n');
-	free(spliter);
-	return (ls);
-}
-*/
-
-char	**mountmap(int fd, t_map *map)
-{
-	char	*spliter;
-	char	*aux;
-	char	**ls;
-	char	*tmp;
-
-	spliter = ft_calloc(sizeof(char), 1);
-	aux = get_next_line(fd);
-	map -> cx = ft_strlen(aux) -1;
-	map -> tx = (map -> cx) * 40;
-	while (aux != NULL)
-	{
-		map->y += 1;
-		tmp = ft_strdup(spliter);
-		free(spliter);
-		spliter = ft_strjoin(tmp, aux);
-		free(aux);
-		aux = get_next_line(fd);
-	}
-	map -> cy = map -> y;
-	map -> ty = (map -> cy) * 40;
-	ls = ft_split(spliter, '\n');
-	free(spliter);
 	return (ls);
 }
 

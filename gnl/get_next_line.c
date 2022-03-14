@@ -6,10 +6,11 @@
 /*   By: migonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 13:49:17 by migonzal          #+#    #+#             */
-/*   Updated: 2022/01/21 11:49:49 by migonzal         ###   ########.fr       */
+/*   Updated: 2022/03/08 12:30:15 by migonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
+#include "../so_long.h"
 
 static char	*ft_free(char **file)
 {
@@ -19,6 +20,12 @@ static char	*ft_free(char **file)
 		*file = NULL;
 	}
 	return (NULL);
+}
+
+static void	ft_error1(void)
+{
+	printf("Error\n Whats wrong with the map man?\n");
+	exit(0);
 }
 
 static char	*get_line(char **file, int fd)
@@ -41,6 +48,8 @@ static char	*get_line(char **file, int fd)
 		return (line);
 	}
 	line = ft_substr(aux, 0, i + 1);
+	if (line[0] == '\n')
+		ft_error1();
 	file[fd] = ft_substr(aux, i + 1, (ft_strlen(aux) - i));
 	ft_free(&aux);
 	return (line);

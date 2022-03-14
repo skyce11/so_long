@@ -11,6 +11,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+#include "../gnl/get_next_line.h"
 
 static int	ft_estim(long n)
 {

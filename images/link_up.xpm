@@ -6,7 +6,7 @@
 #    By: migonzal <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 11:02:54 by migonzal          #+#    #+#              #
-#    Updated: 2022/01/20 11:03:07 by migonzal         ###   ########.fr        #
+#    Updated: 2022/02/09 09:05:59 by migonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -227,7 +227,7 @@ static char *_17bd338beed45f3b7c201c5e700f84eyUoXTXXR5QjHWwlD[] = {
 "8X c #FF6BCB",
 "9X c #FF6DD2",
 "0X c #D1E2C5",
-"qX c #FFFFFF",
+"qX c #489848",
 "wX c #E4F0D2",
 /* pixels */
 "qXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqXqX",

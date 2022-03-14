@@ -6,11 +6,11 @@
 /*   By: migonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 11:14:08 by migonzal          #+#    #+#             */
-/*   Updated: 2022/03/14 13:25:27 by migonzal         ###   ########.fr       */
+/*   Updated: 2022/03/07 12:17:46 by migonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	freemap(t_map *map)
 {
@@ -35,7 +35,6 @@ void	ft_error(char *str, int c, t_map *map)
 	printf("%s\n", str);
 	if (c == 1)
 		freemap(map);
-	system("leaks so_long");
 	exit(0);
 }
 
@@ -57,7 +56,7 @@ void	all_ok(t_map *map)
 		}
 	}
 	if (map -> cc < 1)
-		ft_error("Error\n There arent collectionables man", 1, map);
+		ft_error("Error\n There arent collectionables man", 0, map);
 }
 
 void	only_five(t_map *map)
@@ -80,7 +79,7 @@ void	only_five(t_map *map)
 		}
 	}
 	if (c > 0)
-		ft_error("Error\n What are u triyng to put here?", 1, map);
+		ft_error("Error\n What are u triyng to put here?", 0, map);
 }
 
 void	border(t_map *map)
